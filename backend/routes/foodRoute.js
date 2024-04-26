@@ -4,8 +4,18 @@ import multer from 'multer'
 
 const foodRouter = experess.Router();
 
+// Image storage Engine
 
-foodRouter.post("/add", addFood)
+const storage = multer.diskStorage({
+    destination:"uploads",
+    filename:(req,file,cb) => {
+        return cb(null,`${Date.now()}${file.originalname}`)
+    }
+})
+
+const upload = multer({storage:storage})
+
+foodRouter.post("/add", upload.single("image"), addFood)
 
 
 
