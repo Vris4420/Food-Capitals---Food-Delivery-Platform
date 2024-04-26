@@ -17,10 +17,12 @@ connectDB();
 
 //API endpoint
 app.use('/api/food',foodRouter)
+// app.use('/images',express.static('uploads'))
 
 app.get("/", (req,res) => {
     res.send("Api working")
 })
+
 
 app.listen(port, () => {
     console.log(`Server listening on http://localhost:${port}`)
