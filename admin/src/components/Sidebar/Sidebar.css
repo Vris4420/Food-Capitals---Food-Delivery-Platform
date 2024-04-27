@@ -25,6 +25,13 @@
     cursor: pointer;
 }
 
+.sidebar-option.active{
+    background-color: #fff0ed;
+    border-color: tomato;
+    border-radius: 15px 0px 0px 15px;
+    transition: 0.5s;
+}
+
 @media (max-width:900px){
     .sidebar-option p{
         display: none;

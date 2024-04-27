@@ -8,19 +8,23 @@ export function Sidebar() {
   return (
     <div className="sidebar">
       <div className="sidebar-options">
-        <NavLink to='/add' className="sidebar-option">
+        <NavLink to="/add" className="sidebar-option">
           <div>
-            <FontAwesomeIcon icon={faShoppingBag} />
+          <FontAwesomeIcon icon={faCirclePlus} />
           </div>
           <p>Add Items</p>
         </NavLink>
-        <NavLink to='/list' className="sidebar-option">
-          <FontAwesomeIcon icon={faCirclePlus} />
+        <NavLink to="/list" className="sidebar-option">
+          <div>
+            <FontAwesomeIcon icon={faShoppingBag} />
+          </div>
 
           <p>List Items</p>
         </NavLink>
-        <NavLink to='/orders' className="sidebar-option">
-          <FontAwesomeIcon icon={faCirclePlus} />
+        <NavLink to="/orders" className="sidebar-option">
+          <div>
+            <FontAwesomeIcon icon={faShoppingBag} />
+          </div>
           <p>Orders</p>
         </NavLink>
       </div>
