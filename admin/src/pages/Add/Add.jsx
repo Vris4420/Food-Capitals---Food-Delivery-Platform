@@ -1,20 +1,33 @@
 import './Add.css'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUpload } from "@fortawesome/free-solid-svg-icons";
+import { useState } from 'react';
 
 export function Add(){
+
+    const [image,setImage] = useState(false)
+
     return(
        <div className="add">
         <form className='flex-col'>
+
             <div className="add-img-upload flex-col">
                 <p>Upload Image</p>
                 <label htmlFor="image">
-                    <div className="icon">
-                        <FontAwesomeIcon icon={faUpload} />
-                    </div>
+                    {image ? 
+                    (
+                        <div className="preview-img">
+                            <img src={URL.createObjectURL(image) }  />
+                        </div>
+                    ):(
+                        <div className="icon">
+                            <FontAwesomeIcon icon={faUpload} />
+                        </div>
+                    )}
                 </label>
-                <input type="file" id='image' hidden required/>
+                <input onChange={(e) => setImage(e.target.files[0])} type="file" id='image' hidden required/>
             </div>
+
             <div className="add-product-name flex-col">
                 <p>Product name</p>
                 <input type="text" name='name' placeholder='Type here' />
