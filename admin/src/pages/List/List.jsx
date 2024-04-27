@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import "./List.css";
 import axios from "axios";
 import { toast } from "react-toastify";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faX } from "@fortawesome/free-solid-svg-icons";
 
 export function List() {
   const url = "http://localhost:4000";
@@ -40,7 +42,7 @@ export function List() {
                         <p>{item.name}</p>
                         <p>{item.category}</p>
                         <p>${item.price}</p>
-                        <p>x</p>
+                        <FontAwesomeIcon icon={faX}className="cursor"/>
                     </div>
                 )
             })}
