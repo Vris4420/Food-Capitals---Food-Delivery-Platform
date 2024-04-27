@@ -5,8 +5,7 @@ import { toast } from "react-toastify";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faX } from "@fortawesome/free-solid-svg-icons";
 
-export function List() {
-  const url = "http://localhost:4000";
+export function List({url}) {
 
   const [list, setList] = useState([]);
 

@@ -5,8 +5,8 @@ import { useState } from 'react';
 import axios from 'axios'
 import { toast } from 'react-toastify';
 
-export function Add(){
-    const url = 'http://localhost:4000';
+
+export function Add({url}){
 
     const [image,setImage] = useState(false)
     const [data,setData] = useState({
