@@ -1,7 +1,8 @@
-import './Order.css'
+import './Orders.css'
 
-export function Order(){
+export function Orders(){
     return(
-        d
+        <>
+        </>
     )
 }
