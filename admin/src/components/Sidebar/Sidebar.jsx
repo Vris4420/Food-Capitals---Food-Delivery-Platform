@@ -2,26 +2,27 @@ import "./Sidebar.css";
 import ReactDOM from "react-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingBag, faCirclePlus } from "@fortawesome/free-solid-svg-icons";
+import { NavLink } from "react-router-dom";
 
 export function Sidebar() {
   return (
     <div className="sidebar">
       <div className="sidebar-options">
-        <div className="sidebar-option">
+        <NavLink to='/add' className="sidebar-option">
           <div>
             <FontAwesomeIcon icon={faShoppingBag} />
           </div>
           <p>Add Items</p>
-        </div>
-        <div className="sidebar-option">
+        </NavLink>
+        <NavLink to='/list' className="sidebar-option">
           <FontAwesomeIcon icon={faCirclePlus} />
 
           <p>List Items</p>
-        </div>
-        <div className="sidebar-option">
+        </NavLink>
+        <NavLink to='/orders' className="sidebar-option">
           <FontAwesomeIcon icon={faCirclePlus} />
           <p>Orders</p>
-        </div>
+        </NavLink>
       </div>
     </div>
   );
