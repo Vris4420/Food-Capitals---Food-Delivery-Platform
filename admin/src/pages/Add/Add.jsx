@@ -6,6 +6,17 @@ import { useState } from 'react';
 export function Add(){
 
     const [image,setImage] = useState(false)
+    const [data,setData] = useState({
+        name:"",
+        description:"",
+        price:"",
+        category:"North Indian"
+    })
+    function onChangeHandler(event){
+        const name = event.target.name;
+        const value = event.target.value;
+        setData(data => ({...data, [name]:value}))
+    }
 
     return(
        <div className="add">
@@ -30,16 +41,16 @@ export function Add(){
 
             <div className="add-product-name flex-col">
                 <p>Product name</p>
-                <input type="text" name='name' placeholder='Type here' />
+                <input onChange={onChangeHandler} value={data.name} type="text" name='name' placeholder='Type here' />
             </div>
             <div className="add-product-description flex-col">
                 <p>Product description</p>
-                <textarea name="description" rows="6" placeholder='Write description here' required></textarea>
+                <textarea onChange={onChangeHandler} value={data.description} name="description" rows="6" placeholder='Write description here' required></textarea>
             </div>
             <div className="add-category-price">
                 <div className="add-category flex-col">
                     <p>Product category</p>
-                    <select name="category">
+                    <select onChange={onChangeHandler} name="category">
                         <option value="North Indian">North Indian</option>
                         <option value="Pizza">Pizza</option>
                         <option value="Burger">Burger</option>
@@ -52,7 +63,7 @@ export function Add(){
                 </div>
                 <div className="add-price flex-col">
                     <p>Product price</p>
-                    <input type="Number" name='price' placeholder='$20' />
+                    <input onChange={onChangeHandler} value={data.price} type="Number" name='price' placeholder='$20' />
                 </div>
             </div>
             <button type='submit' className='add-btn'>ADD</button>
