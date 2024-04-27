@@ -12,11 +12,20 @@ export function List() {
 
   async function fetchList() {
     const response = await axios.get(`${url}/api/food/list`);
-    console.log(response.data)
     if (response.data.success) {
       setList(response.data.data);
     } else {
       toast.error("Error");
+    }
+  }
+
+  async function removeFood(foodId){
+    const response = await axios.post(`${url}/api/food/remove`,{id:foodId});
+    await fetchList();
+    if(response.data.success){
+        toast.success(response.data.message)
+    }else{
+        toast.error('Error')
     }
   }
 
@@ -42,7 +51,7 @@ export function List() {
                         <p>{item.name}</p>
                         <p>{item.category}</p>
                         <p>${item.price}</p>
-                        <FontAwesomeIcon icon={faX}className="cursor"/>
+                        <FontAwesomeIcon icon={faX}className="cursor" onClick={() => removeFood(item._id)}/>
                     </div>
                 )
             })}
