@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import { menuItems } from "../assets/assets";
 
 export const StoreContext = createContext(null);
@@ -40,6 +40,13 @@ const StoreContextProvider = (props) => {
     }
     return totalAmount;
   }
+
+  //Login after refreshing page
+  useEffect(() => {
+    if(localStorage.getItem("token")){
+      setToken(localStorage.getItem("token"))
+    }
+  },[])
   
 
   const contextValue = {
