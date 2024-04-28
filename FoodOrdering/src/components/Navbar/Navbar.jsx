@@ -4,12 +4,20 @@ import ReactDOM from "react-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch, faShoppingCart, faBagShopping, faRightFromBracket } from "@fortawesome/free-solid-svg-icons"; // Correct import for the magnifying glass icon
 import { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { StoreContext } from "../../context/StoreContext";
 
 export function Navbar({ setShowLogin }) {
   const [menu, setMenu] = useState("home");
   const {getTotalCartAmount,token, setToken} = useContext(StoreContext);
+  const navigate = useNavigate();
+
+  function logout(){
+    localStorage.removeItem("token")
+    setToken("")
+    navigate("/")
+
+  }
 
   return (
     <div className="navbar">
@@ -63,7 +71,7 @@ export function Navbar({ setShowLogin }) {
                <FontAwesomeIcon icon={faBagShopping} id="bagShopping" />
                 <p>Orders</p></li>
               <hr/>
-              <li>
+              <li onClick={logout}>
                <FontAwesomeIcon icon={faRightFromBracket} id="rightFromBracket" />
                 <p>Logout</p></li>
               <hr/>
