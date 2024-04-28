@@ -6,7 +6,7 @@ import { faX } from "@fortawesome/free-solid-svg-icons";
 import {useNavigate} from 'react-router-dom'
 
 export function Cart() {
-  const { cartItems, menuItems, removeFromCart, getTotalCartAmount } = useContext(StoreContext);
+  const { cartItems, menuItems, removeFromCart, getTotalCartAmount, url } = useContext(StoreContext);
   const navigate = useNavigate();
   return (
     <div className="cart">
@@ -22,16 +22,16 @@ export function Cart() {
         <br />
         <hr />
         {menuItems.map((item) => {
-          if (cartItems[item.id] > 0) {
+          if (cartItems[item._id] > 0) {
             return (
-              <div key={item.id}>
+              <div key={item._id}>
                 <div className="cart-items-title cart-items-item">
-                  <img src={item.image} />
+                  <img src={url+"/images/"+item.image} />
                   <p>{item.name}</p>
                   <p>${item.price}</p>
-                  <p>{cartItems[item.id]}</p>
-                  <p>${item.price * cartItems[item.id]}</p>
-                  <p onClick={() => removeFromCart(item.id)} className="cross">
+                  <p>{cartItems[item._id]}</p>
+                  <p>${item.price * cartItems[item._id]}</p>
+                  <p onClick={() => removeFromCart(item._id)} className="cross">
                   <FontAwesomeIcon icon={faX} />
                   </p>
                 </div>
