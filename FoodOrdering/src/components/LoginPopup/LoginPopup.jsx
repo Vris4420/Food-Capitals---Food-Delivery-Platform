@@ -1,10 +1,21 @@
-import { useState } from "react";
+import {  useState } from "react";
 import "./LoginPopup.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faX } from "@fortawesome/free-solid-svg-icons";
 
 export function LoginPopup({ setShowLogin }) {
   const [currState, setCurrState] = useState("Login");
+  const [data,setData] = useState({
+    name:"",
+    email:"",
+    password:""
+  })
+
+  function onChangeHandler(event){
+    const name = event.target.name;
+    const value = event.target.value;
+    setData(data => ({...data,[name]:value}))
+  }
 
   return (
     <div className="login-popup">
@@ -19,10 +30,10 @@ export function LoginPopup({ setShowLogin }) {
           {currState === "Login" ? (
             <></>
           ) : (
-            <input type="text" placeholder="Your Name" required />
+            <input name="name" onChange={onChangeHandler} value={data.name} type="text" placeholder="Your Name" required />
           )}
-          <input type="email" placeholder="Your Email Id" required />
-          <input type="password" placeholder="Your Password" required />
+          <input name="email" onChange={onChangeHandler} value={data.email} type="email" placeholder="Your Email Id" required />
+          <input name="password" onChange={onChangeHandler} value={data.password} type="password" placeholder="Your Password" required />
         </div>
         <button>{currState === "Sign up" ? "Create Account" : "Login"}</button>
         <div className="login-popup-condition">
