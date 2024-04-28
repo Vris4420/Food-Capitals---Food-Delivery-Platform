@@ -12,7 +12,7 @@ export function FoodDisplay({category}){
             <div className="food-display-list">
                 {menuItems.map((item) => {
                     if(category==="All" || category === item.category){
-                        return <MenuItem key={item.id} id={item.id} name={item.name} description={item.description} price={item.price} image={item.image}/>
+                        return <MenuItem key={item._id} id={item._id} name={item.name} description={item.description} price={item.price} image={item.image}/>
                     }
                 })}
             </div>

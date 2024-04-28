@@ -6,12 +6,12 @@ import { faPlus, faMinus } from "@fortawesome/free-solid-svg-icons";
 import { StoreContext } from "../../context/StoreContext";
 
 export function MenuItem({ id, name, price, description, image }) {
-  const {cartItems, addToCart,removeFromCart} = useContext(StoreContext);
+  const {cartItems, addToCart,removeFromCart,url} = useContext(StoreContext);
 
   return (
     <div className="food-item">
       <div className="food-item-img-container">
-        <img src={image} alt="img" className="food-item-image" />
+        <img src={url+"/images/"+image} alt="img" className="food-item-image" />
         {!cartItems[id] ? (
           <img
             className="add"
