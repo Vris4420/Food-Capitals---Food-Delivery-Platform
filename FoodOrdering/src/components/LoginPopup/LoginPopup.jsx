@@ -1,9 +1,13 @@
-import {  useState } from "react";
+import {  useContext, useState } from "react";
 import "./LoginPopup.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faX } from "@fortawesome/free-solid-svg-icons";
+import { StoreContext } from "../../context/StoreContext";
 
 export function LoginPopup({ setShowLogin }) {
+
+  const {url} = useContext(StoreContext)
+
   const [currState, setCurrState] = useState("Login");
   const [data,setData] = useState({
     name:"",
@@ -16,6 +20,8 @@ export function LoginPopup({ setShowLogin }) {
     const value = event.target.value;
     setData(data => ({...data,[name]:value}))
   }
+
+  
 
   return (
     <div className="login-popup">
