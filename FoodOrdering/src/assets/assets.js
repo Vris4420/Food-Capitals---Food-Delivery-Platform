@@ -26,6 +26,7 @@ import InstagramIcon from './instagram_Icon.png'
 import XIcon from './X_Icon.png'
 import playStore from './playStore.png'
 import appStore from './appStore.png'
+import profilePic from './profilePic.png'
 
 export const assets = {
     logo,
@@ -34,7 +35,8 @@ export const assets = {
     InstagramIcon,
     XIcon,
     playStore,
-    appStore
+    appStore,
+    profilePic,
 }
 
 export const menu_list = [
