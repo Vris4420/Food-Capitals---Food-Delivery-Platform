@@ -55,12 +55,19 @@ const StoreContextProvider = (props) => {
     setMenuItems(response.data.data)
   }
 
+  // items in cart to be present even if page is refresh
+  async function loadCartData(token){
+    const response = await axios.post(url+"/api/cart/get",{},{headers:{token}})
+    setCartItems(response.data.cartData);
+  }
+
   //Login after refreshing page
   useEffect(() => {
     async function loadData(){
       await fetchFoodList();
       if(localStorage.getItem("token")){
         setToken(localStorage.getItem("token"))
+        await loadCartData(localStorage.getItem("token"));
       }
     }
     loadData()
